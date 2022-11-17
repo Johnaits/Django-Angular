@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { MembersDetailComponent } from './members-detail/members-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MembersDetailComponent } from './members-detail/members-detail.componen
       cookieName: 'csrftoken',
       headerName: 'X-CSRFToken',
     }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

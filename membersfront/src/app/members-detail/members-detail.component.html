@@ -1,2 +1,11 @@
 <p>members-detail works!</p>
-Member loaded: {{selected_member}}
+Member loaded: {{selected_member.name}} - {{selected_member.surname}}
+
+<p>selected id = {{selected_id}}</p> 
+
+<input type="text" [(ngModel)]="selected_member.id" readonly>
+<input type="text" [(ngModel)]="selected_member.name">
+<input type="text" [(ngModel)]="selected_member.surname">
+
+<button (click)="update()">Update member</button>
+
