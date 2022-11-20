@@ -22,7 +22,11 @@ export class ApiService {
 };
   getMembers(id: string): Observable<any>{
   return this.http.get(this.baseurl + 'members/'+id+'/',
-  {headers: this.httpheaders},);
-  
+  {headers: this.httpheaders},);  
+};
+  saveNewMember(member: any):Observable<any>{
+    return this.http.post(this.baseurl + 'members/',member,
+    {headers: this.httpheaders},);
+
+  };
 }
-} 

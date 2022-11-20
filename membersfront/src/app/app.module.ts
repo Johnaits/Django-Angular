@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { MembersDetailComponent } from './members-detail/members-detail.component';
 import { FormsModule } from '@angular/forms';
+import { NewmemberComponent } from './newmember/newmember.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MembersDetailComponent
+    MembersDetailComponent,
+    NewmemberComponent
   ],
   imports: [
     BrowserModule,

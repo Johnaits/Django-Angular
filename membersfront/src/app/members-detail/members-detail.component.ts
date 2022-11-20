@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 })
 export class MembersDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private api:ApiService) { }
+  constructor(private route: ActivatedRoute,private api:ApiService,private router: Router) { }
   selected_member = {id:'',name:'',surname:''};
   selected_id!: number;
   ngOnInit(): void {
@@ -37,6 +37,10 @@ export class MembersDetailComponent implements OnInit {
       error =>{
         console.log(error.message);
       })
+  }
+
+  newmember(){
+    this.router.navigate(["newmember"])
   }
 
 }
