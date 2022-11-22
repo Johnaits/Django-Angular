@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { ApiService } from './api.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { ApiService } from './api.service';
 })
 export class MembersDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private api:ApiService,private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private api:ApiService,
+    private router: Router,
+    private appComponente: AppComponent) { }
   selected_member = {id:'',name:'',surname:''};
   selected_id!: number;
   ngOnInit(): void {
@@ -33,6 +38,7 @@ export class MembersDetailComponent implements OnInit {
     this.api.updateMembers(this.selected_member).subscribe(
       data =>{
         this.selected_member = data;
+        this.appComponente.getMembers();
       },
       error =>{
         console.log(error.message);
@@ -43,4 +49,21 @@ export class MembersDetailComponent implements OnInit {
     this.router.navigate(["newmember"])
   }
 
+  delete()
+  {
+    this.api.deleteMembers(this.selected_id).subscribe(
+      data =>{
+        let i: number;
+        this.appComponente.members.forEach((element, index)=>{
+          if(parseInt(element.id)==this.selected_id){
+            i=index;
+          }
+        this.api.deleteMembers(i);
+        this.appComponente.getMembers();
+        })
+      },
+      error =>{
+        console.log(error);
+      })
+  }
 }

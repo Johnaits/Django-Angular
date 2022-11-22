@@ -26,6 +26,10 @@ export class ApiService {
     {headers: this.httpheaders},);
   }
   
+  deleteMembers(selected_id:any): Observable<any>{  
+    return this.http.delete(this.baseurl + 'members/'+ selected_id+'/',
+    {headers: this.httpheaders},);
+  }
 }
 
 
